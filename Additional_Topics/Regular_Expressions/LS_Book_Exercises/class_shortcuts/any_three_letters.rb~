@@ -1,0 +1,18 @@
+=begin
+
+Write a regex tat matches any sequence of (3) letters.
+
+Test strings:
+  "The red d0g chases the b1ack cat."
+  "a_b c_d""
+
+=end
+
+str = "The red d0g chases the b1ack cat.
+  a_b c_d"
+
+pattern = /[a-z][a-z][a-z]/i
+
+matches = str.match(pattern) 
+
+p matches

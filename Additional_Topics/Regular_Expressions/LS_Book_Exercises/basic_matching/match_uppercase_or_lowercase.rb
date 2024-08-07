@@ -1,0 +1,17 @@
+=begin
+
+Write a regex that matches an uppercase or lowercase `"H"`.
+Test cases:
+  "Henry"
+  "perch"
+  "golf"
+
+=end
+
+p "Henry".match(/[h|H]/) # => `#<MatchData "H">`
+puts "perch".match(/h/i)    # => `"h"`
+p "golf".match(/h/i)     # => `nil`
+
+%w(Henry perch golf).each do |str|
+  puts str.match(/h/i)
+end

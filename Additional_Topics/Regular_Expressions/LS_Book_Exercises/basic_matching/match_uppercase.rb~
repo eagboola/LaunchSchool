@@ -1,0 +1,13 @@
+=begin
+
+Write a regex that matches an uppercase `K`.
+Test Cases:
+  "Kx"
+  "BlacK"
+  "kelly"
+
+=end
+
+"Kx".match(/K/)      # => `#<MatchData "K">`
+"BlacK".match(/K/)   # => `#<MatchData "K">`
+"kelly".match(/K/)   # => `nil`

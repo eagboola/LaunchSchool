@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# requests should consists on (1) line comprised of (3) parts:
+#	1. reqquest method
+#	2. path
+#	3. HTTP version
+
+function server() {
+
+	while true
+	do
+		read method path version
+		if [[ $method = 'GET' ]]
+		then
+			if [[ -f ./www/$path ]]
+			then
+				echo 'HTTP/1.1 200 OK\r\n\r\n'; cat "./www/$path"
+			else
+				echo 'HTTP/1.1 404 Not Found\r\n\r\n'
+			fi
+		else
+			echo 'HTTP/1.1 400 Bad Request\r\n\r\n'
+		fi
+
+	done
+
+}
+
+coproc SERVER_PROCESS { server; }  # `coproc` command executes a process asynchronously in a subshell
+                                   # this coprocess is called `SERVER_PROCESS` and executes the `server` function
+
+netcat -lv 2345 <&${SERVER_PROCESS[0]} >&${SERVER_PROCESS[1]}

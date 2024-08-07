@@ -1,0 +1,25 @@
+=begin
+
+Write a regex that matches any of the following fruits:: banana, orange, apple, strawberry.
+The fruits may appear in other words.
+
+Test cases:
+  'banana'
+  'orange'
+  'pineapples'
+  'strawberry'
+  'raspberry'
+  'grappler'
+
+=end
+
+fruits = %w(banana orange pineapples strawberry raspberry grappler)
+match_words = /banana|orange|apple|strawberry/
+
+fruits.each do |fruit|
+  puts fruit.match(/[banana|orange|apple|strawberry]/)
+end
+
+fruits.each do |fruit|
+  puts  fruit.match(match_words)
+end
