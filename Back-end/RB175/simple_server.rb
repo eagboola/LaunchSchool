@@ -1,8 +1,6 @@
 require "socket"
 
-server = TCPSocket.new("localhost", 3003)
-
-def 
+server = TCPServer.new("localhost", 3003)
 
 loop do
 
@@ -11,5 +9,6 @@ loop do
   request_line = client.gets
   puts request_line
 
-
+  client.puts request_line
+  client.close
 end
